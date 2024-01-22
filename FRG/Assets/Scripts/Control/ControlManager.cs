@@ -6,13 +6,14 @@ using UnityEngine.InputSystem.Interactions;
 // Use a separate PlayerInput component for setting up input.
 public class ControlManager : MonoBehaviour
 {
-
+    //public Action MoveCallBack;
     private bool m_Charging;
     private Vector2 m_Look;
     private Vector2 m_Move;
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        
         m_Move = context.ReadValue<Vector2>();
         Move(m_Move);
     }
@@ -59,6 +60,7 @@ public class ControlManager : MonoBehaviour
     private void Move(Vector2 direction)
     {
         Debug.Log("Move" + direction);
+        
     }
 
     private void Look(Vector2 rotate)
