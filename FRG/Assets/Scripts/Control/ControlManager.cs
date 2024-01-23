@@ -7,7 +7,6 @@ using UnityEngine.InputSystem.Interactions;
 // Use a separate PlayerInput component for setting up input.
 public class ControlManager : MonoSingleton<ControlManager>
 {
-    public Action<Vector2> MoveCallBack;
     private bool m_Charging;
     private Vector2 m_Look;
     private Vector2 m_Move;
@@ -60,22 +59,22 @@ public class ControlManager : MonoSingleton<ControlManager>
 
     private void Move(Vector2 direction)
     {
-        Debug.Log("Move" + direction);
-        MoveCallBack?.Invoke(direction);
+        // Debug.Log("Move" + direction);
+        EntityManager.Instance.GetPlayer().move.OnMove(direction);
     }
 
     private void Look(Vector2 rotate)
     {
-        Debug.Log("Look" + rotate);
+        // Debug.Log("Look" + rotate);
     }
 
     private void Fire()
     {
-        Debug.Log("Fire");
+        // Debug.Log("Fire");
     }
 
     private void ChargingFire()
     {
-        Debug.Log("ChargingFire");
+        // Debug.Log("ChargingFire");
     }
 }
