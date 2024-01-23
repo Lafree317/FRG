@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
 // Use a separate PlayerInput component for setting up input.
-public class ControlManager : MonoBehaviour
+public class ControlManager : MonoSingleton<ControlManager>
 {
-    //public Action MoveCallBack;
+    public Action<Vector2> MoveCallBack;
     private bool m_Charging;
     private Vector2 m_Look;
     private Vector2 m_Move;
@@ -60,7 +61,7 @@ public class ControlManager : MonoBehaviour
     private void Move(Vector2 direction)
     {
         Debug.Log("Move" + direction);
-        
+        MoveCallBack?.Invoke(direction);
     }
 
     private void Look(Vector2 rotate)
